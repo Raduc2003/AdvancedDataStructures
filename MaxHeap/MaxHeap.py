@@ -57,15 +57,15 @@ def heapify(heap):
         i -= 1
 
 
-h1 = MaxHeap()
-h2 = MaxHeap()
-h1.insert(12)
-h1.insert(9)
-h1.insert(10)
-h2.insert(2)
-h2.insert(3)
-h2.insert(1)
-h1.join(h2)
+# h1 = MaxHeap()
+# h2 = MaxHeap()
+# h1.insert(12)
+# h1.insert(9)
+# h1.insert(10)
+# h2.insert(2)
+# h2.insert(3)
+# h2.insert(1)
+# h1.join(h2)
 
-h1.printHeap()
-h2.printHeap()
+# h1.printHeap()
+# h2.printHeap()

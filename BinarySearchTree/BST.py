@@ -105,8 +105,14 @@ class BST:
                 while replaceNode.right is not None:
                     replaceNode = replaceNode.right
                 currentNode.val = replaceNode.val
-                self.remove(replaceNode)
-
+                if replaceNode.parent.left == replaceNode:
+                    replaceNode.parent.left = replaceNode.left
+                    if replaceNode.left is not None:
+                        replaceNode.left.parent = replaceNode.parent
+                else:
+                    replaceNode.parent.right = replaceNode.left
+                    if replaceNode.left is not None:
+                        replaceNode.left.parent = replaceNode.parent
 
 def printBST(root):
     if root != None:
@@ -115,21 +121,36 @@ def printBST(root):
         printBST(root.right)
 
 
-tree = BST()
-tree.insert(7)
-tree.insert(5)
-tree.insert(9)
-tree.insert(3)
-tree.insert(6)
-tree.insert(8)
-tree.insert(11)
-tree.insert(10)
-tree.insert(12)
-tree.insert(2)
-tree.insert(4)
-tree.insert(4.5)
-# print(tree.firstAfter(5.1))
-printBST(tree.root)
-tree.remove(n)
-print("after removing")
-printBST(tree.root)
+def printBSTBetween(root, start, end):
+    if root is None:
+        return
+
+    if start < root.val:
+        printBSTBetween(root.left, start, end)
+
+    if start <= root.val <= end:
+        print(root.val, end=' ')
+
+    if root.val < end:
+        printBSTBetween(root.right, start, end)
+
+# tree = BST()
+# tree.insert(7)
+# tree.insert(5)
+# tree.insert(9)
+# tree.insert(3)
+# tree.insert(6)
+# tree.insert(8)
+# tree.insert(11)
+# tree.insert(10)
+# tree.insert(12)
+# tree.insert(2)
+# tree.insert(4)
+# tree.insert(4.5)
+# # print(tree.firstAfter(5.1))
+# printBST(tree.root)
+# tree.remove(n)
+# print("after removing")
+# printBST(tree.root)
+# print('asdads')
+# printBSTBetween(tree.root,7,10)
